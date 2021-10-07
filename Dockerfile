@@ -1,4 +1,4 @@
-FROM redis
+FROM redis:6.2.6
 
 WORKDIR /usr/src/app/
 
