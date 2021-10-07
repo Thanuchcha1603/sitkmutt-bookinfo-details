@@ -1,9 +1,12 @@
-FROM redis:6.2.6
+FROM ruby:3.0
 
-WORKDIR /usr/src/app/
+WORKDIR /usr/src/app
 
-COPY details.rb /usr/src/app/details.rb
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+COPY . .
 
 EXPOSE 8081
 
-CMD [ "redis-server", "/usr/src/app/details.rb","8081]
+CMD ["./details.rb","8081]
