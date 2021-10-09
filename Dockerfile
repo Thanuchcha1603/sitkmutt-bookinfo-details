@@ -1,12 +1,9 @@
-FROM ruby:3.0
+FROM ruby:2.7-bullseye
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
 
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
-
-COPY . .
+COPY src/ /usr/src/app/
 
 EXPOSE 8081
 
-CMD ["./details.rb","8081]
+CMD ["ruby","/usr/src/app/details.rb","8081"]
